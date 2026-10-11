@@ -93,7 +93,7 @@ flight_searches:create_index('primary', {
 ```
 
 ## (4) Создайте вторичный индекс на поля departure_date, airline и departure_city. ##
-
+Создаем вторичный индекс по полям departure_date, airline и departure_city
 ```
 flight_searches:create_index('date_airline_city', {
     type = 'TREE',
@@ -109,7 +109,6 @@ flight_searches:create_index('date_airline_city', {
 
 ## (5) Вставьте несколько записей в спейс. ##
 
-Сделал это через питон script с помощью кода
 ```
 box.space.flight_searches:insert({
     1, 
@@ -179,7 +178,6 @@ box.space.flight_searches:insert({
 
 ## (6) Напишите запрос для выборки минимальной стоимости авиабилета на рейсы с датой вылета 01.01.2027. ##
 
-Сделал это через питон script с помощью кода
 ```
 local results = box.space.flight_searches.index.date_departure:select({'2027-01-01'})
 ---
@@ -191,7 +189,6 @@ local results = box.space.flight_searches.index.date_departure:select({'2027-01-
 
 ## (7) Реализуйте функцию на Lua для вывода списка рейсов с минимальной стоимостью билета менее 3000 рублей. ##
 
-Сделал это через питон script с помощью кода
 ```
 local results = box.space.flight_searches.index.price:select({3000}, {iterator = 'LT'})
 ---
